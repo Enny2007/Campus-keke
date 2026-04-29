@@ -1,0 +1,15 @@
+export const locations: string[] = [
+  "Main Gate",
+  "Babcock Guest House(BGH)",
+  "DHL",
+  "SAT",
+  "Library",
+  "Cafeteria",
+  "Amphitheatre",
+  "Bucodel",
+  "Babcock University Teaching Hospital(BUTH)",
+  "Neal Wilson",
+  "Nelson Mandela",
+  "Havilah Gold",
+  "Stadium",
+]
