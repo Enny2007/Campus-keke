@@ -2,6 +2,7 @@ import logo from "../assets/icon/keke-icon.jpg";
 
 const Footer = () => {
   return (
+    <>
   <footer className="bg-slate-900 text-white py-4">
     <div className="container mx-auto text-center">
       <div className="flex flex-row  gap-2 mx-auto items-center justify-center ">
@@ -12,7 +13,7 @@ const Footer = () => {
       
     </div>
   </footer>
-
+</>
   );
 };
 
