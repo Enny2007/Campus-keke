@@ -1,31 +1,34 @@
 import { Routes, Route } from "react-router-dom";
-import HeaderNav from "./layouts/HeaderNav";
-import Home from "./pages/Home";
-import StudentLogin from "./pages/student/StudentLogin";
-import DriverLogin from "./pages/driver/DriverLogin";
-import StudentSignUp from "./pages/student/StudentSignUp";
-import StudentDashboard from "./pages/student/StudentDashboard";
-import DriverDashboard from "./pages/driver/DriverDashboard";
-import RideStatus from "./pages/student/RideStatus";
+import { PUBLIC_ROUTES } from "./routes/public/public_routes";
 
 function App() {
+  //what all routes should look like
+  type RouteProp = {
+    path: string;
+    element: React.ElementType;
+    children?: RouteProp[];
+  };
   return (
     <>
-      <HeaderNav />
+      
 
       <main className="pt-[64px]">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/student-login" element={<StudentLogin />} />
-          <Route path="/driver-login" element={<DriverLogin />} />
-          <Route path="/student-sign-up" element={<StudentSignUp />} />
-          <Route path="/driver-dashboard" element={<DriverDashboard />} />
-          <Route path="/student-dashboard" element={<StudentDashboard />} />
-          <Route
-            path="/student-dashboard/student-ride-status"
-            element={<RideStatus />}
-          />
-        </Routes>
+         <Routes>
+           {/* loop through all main routes */}
+        {PUBLIC_ROUTES.map((route: RouteProp, idx: number) => (
+          <Route key={idx} path={route.path} element={<route.element />}>
+             {/* if route has sub-pages, render them here */}
+            {route.children &&
+              route.children.map((child, childIdx) => (
+                <Route
+                  key={childIdx}
+                  path={child.path}
+                  element={<child.element />}
+                />
+              ))}
+          </Route>
+        ))}
+      </Routes>
       </main>
     </>
   );
